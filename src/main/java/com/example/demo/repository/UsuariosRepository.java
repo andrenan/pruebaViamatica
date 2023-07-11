@@ -10,7 +10,7 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
 
     @Query(value = "select p from  Usuarios  p where p.mail = :ident")
     Usuarios buscarPorIdent(String ident);
-    @Query(value = "select p from  Usuarios  p where p.userName = :userName")
+    @Query(value = "select * from  Usuarios  p where p.user_name = :userName limit 1",nativeQuery = true)
     Usuarios findByUsername(String userName);
 
 }

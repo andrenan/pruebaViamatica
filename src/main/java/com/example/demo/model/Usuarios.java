@@ -18,6 +18,8 @@ public class Usuarios {
 
     private Character status;
 
+
+
     public Long getId() {
         return id;
     }
