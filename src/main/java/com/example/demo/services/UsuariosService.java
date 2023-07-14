@@ -1,6 +1,5 @@
 package com.example.demo.services;
 
-import com.example.demo.Utils;
 import com.example.demo.model.Persona;
 import com.example.demo.model.Usuarios;
 import com.example.demo.repository.PersonaRepository;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import java.io.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +22,7 @@ public class UsuariosService {
     @Autowired
     private PersonaRepository repo2;
 
-    private Utils utilUser;
+
 
 
 
