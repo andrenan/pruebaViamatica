@@ -166,7 +166,7 @@ public interface RolUsuariosRepository extends JpaRepository<RolUsuarios, Long> 
         return null;
     }
 
-    @Query(value = "select * from  rol_usuarios  p where p.usuarios = :idd",nativeQuery = true)
+    @Query(value = "select * from  rol_usuarios  p where p.usuarios = :idd order by p.id desc limit 1",nativeQuery = true)
     public RolUsuarios getByUsuarios(Long idd);
 
     @Query(value = "select * from  rol_usuarios  p where p.usuarios = :idd",nativeQuery = true)

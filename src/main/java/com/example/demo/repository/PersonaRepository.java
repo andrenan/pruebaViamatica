@@ -9,4 +9,6 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
     @Query(value = "select count(*) from  Persona  p where p.identificacion = :ident",nativeQuery = true)
     Long buscarPorIdent(String ident);
+
+    Persona findByIdentificacion(String identificacion);
 }

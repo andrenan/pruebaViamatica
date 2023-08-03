@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.Persona;
 import com.example.demo.model.Usuarios;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,7 +11,14 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
 
     @Query(value = "select p from  Usuarios  p where p.mail = :ident")
     Usuarios buscarPorIdent(String ident);
-    @Query(value = "select * from  Usuarios  p where p.user_name = :userName limit 1",nativeQuery = true)
-    Usuarios findByUsername(String userName);
+
+
+    Usuarios findByUserName(String userName);
+
+    Usuarios findByUserNameOrMailAndPassword(String userName,String mail,String password);
+
+    List<Usuarios> findByUserNameAndStatus(String userName, Character status);
+
+    List<Usuarios> findByPersona(Persona persona);
 
 }

@@ -18,7 +18,7 @@ public class RolUsuariosController {
     public ResponseEntity<?> findById(@PathVariable Long id) {
         System.out.println(id);
         RolUsuarios usuario = service.getByUsuarios(id);
-        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         if(usuario != null){
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         }
@@ -26,9 +26,5 @@ public class RolUsuariosController {
             usuario = new RolUsuarios();
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         }
-
-
-
-
     }
 }
