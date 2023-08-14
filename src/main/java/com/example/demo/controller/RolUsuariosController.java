@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/rolUsuariosApi")
 public class RolUsuariosController {
     @Autowired
-    private RolUsuariosRepository service;
+    private RolUsuariosRepository repo;
     @GetMapping("/findById/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id) {
         System.out.println(id);
-        RolUsuarios usuario = service.getByUsuarios(id);
-
+        RolUsuarios usuario = repo.findById(id).get();
         if(usuario != null){
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         }

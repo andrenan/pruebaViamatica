@@ -13,8 +13,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
+/**
+ * @autor
+ * Esta clase
+ */
 @Service
 @Slf4j
 public class UsuariosService {
@@ -29,6 +32,11 @@ public class UsuariosService {
     private Utils utilitarios;
 
 
+    /**
+     * Este metodo guarda...
+     * @param items es un Usuario a guardar
+     * @return retorna un
+     */
     public ResponseEntity<?> guardar(Usuarios items) {
         List<Usuarios> listaUsuarios;
         Persona personaGuardar;
@@ -40,7 +48,7 @@ public class UsuariosService {
             if (validacionDatosUsuario(items, listaUsuarios)) {
                 personaGuardar = repo2.save(items.getPersona());
                 items.setPersona(personaGuardar);
-                items.setMail(validarMailArreglo(personaGuardar, utilitarios));
+                items.setEmail(validarMailArreglo(personaGuardar, utilitarios));
                 repo.save(items);
             } else {
                 log.info("LA identificacion NO ES VALIDA: {}" + items.getPersona().getIdentificacion());
@@ -61,9 +69,9 @@ public class UsuariosService {
                 && utilitarios.validarPass(items.getPassword())) {
             valorValidacion = Boolean.TRUE;
         }
+
         return valorValidacion;
     }
-
 
 
     public String validarMailArreglo(Persona p, Utils utilitarios) {

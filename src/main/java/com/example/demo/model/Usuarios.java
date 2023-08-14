@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "usuarios")
@@ -10,8 +9,11 @@ public class Usuarios {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String userName;
+
+    @Transient
+    private String token;
     private String password;
-    private String mail;
+    private String email;
     private Character sessionActive;
     @ManyToOne
     @JoinColumn(name = "persona")
@@ -20,6 +22,13 @@ public class Usuarios {
     private Character status;
 
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public Long getId() {
         return id;
@@ -45,12 +54,12 @@ public class Usuarios {
         this.password = password;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Character getSessionActive() {

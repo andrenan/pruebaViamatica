@@ -19,4 +19,6 @@ public class ResponseService {
     private String mensajeTecnico;
 
     private Map<String, Object> contenido;
+
+
 }

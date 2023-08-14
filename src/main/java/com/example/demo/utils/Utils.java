@@ -91,6 +91,7 @@ public class Utils {
     }
 
     public Boolean validarGuardadoDeUsuarios(Usuarios items, Integer tamanioLista){
+        System.out.println(tamanioLista);
         int contador = 0;
         Boolean valorRegreso = Boolean.FALSE;
         String[] textoSeparado = items.getPersona().getNombres().split(" ");
@@ -98,7 +99,7 @@ public class Utils {
             contador++;
         }
         if((validarApellidosNombres(items.getPersona().getNombres()) || validarApellidosNombres(items.getPersona().getApellidos())) && (!items.getUserName().contains(" "))
-        && validarApellidosNombres(items.getUserName()) && tamanioLista>2 && contador ==1){
+        && validarApellidosNombres(items.getUserName()) && tamanioLista<3 && contador ==1){
             valorRegreso= Boolean.TRUE;
         }else{
 
