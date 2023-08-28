@@ -28,10 +28,10 @@ public class WebSecurityConfig {
 
         JWTAuthenticationFilter jwtAuthenticationFIlter = new JWTAuthenticationFilter();
         jwtAuthenticationFIlter.setAuthenticationManager(authenticationManager);
-        jwtAuthenticationFIlter.setFilterProcessesUrl("/login");
+        jwtAuthenticationFIlter.setFilterProcessesUrl("/login/login");
         return http
                 .csrf().disable().
-                authorizeRequests().
+                authorizeHttpRequests().
                 anyRequest().
                 authenticated().
                 and().

@@ -4,22 +4,23 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
-import javax.jws.Oneway;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TokenUtils {
-    private final static String ACCES_TOKEN_SECRET = "ANB7xKhiUZmwltVd3f1odcHHM9VAwg02kwmLwtZwHv3SxGCOW";
-    private final static Long ACCES_TOKEN_TIME = 2_592_000L;
+    @Value("${security.jwt.key}")
+    private String accesToken;
+    private final  Long ACCES_TOKEN_TIME = 2_592_000L;
 
-    public static String createToken(String nombre, String email) {
+    private final  String ACCES_TOKEN_SECRET = "ANB7xKhiUZmwltVd3f1odcHHM9VAwg02kwmLwtZwHv3SxGCOW";
+
+    public  String createToken(String nombre, String email) {
         long expirationTime = ACCES_TOKEN_TIME * 1000;
-        Date expirationDate = new Date(System.currentTimeMillis());
+        Date expirationDate = new Date(System.currentTimeMillis() + expirationTime);
 
         Map<String, Object> extra = new HashMap<>();
         extra.put("nombre", nombre);
@@ -31,7 +32,7 @@ public class TokenUtils {
                 .compact();
     }
 
-    public static UsernamePasswordAuthenticationToken getAuthentication(String token) {
+    public  UsernamePasswordAuthenticationToken getAuthentication(String token) {
         try {
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(ACCES_TOKEN_SECRET.getBytes())

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @Slf4j
-//@RequestMapping("/login")
+@RequestMapping("/login")
 @CrossOrigin(origins = "http://localhost:4200/")
 public class LoginController {
 
@@ -18,7 +18,7 @@ public class LoginController {
 
 
 
-    //@PostMapping("/login")
+    @PostMapping("/login")
     public ResponseService login(@RequestBody Usuarios loginRequest) {
 
        return (service.login(loginRequest));
